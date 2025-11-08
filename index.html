@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>flumpsi's page</title>
+<style>
+  body {
+    background-color: #000000;
+    color: #000080;
+    font-family: "Comic Sans MS", cursive, sans-serif
+  }
+
+  header {
+    background-color: #000000;
+    font-size: 40px
+  }
+
+  main {
+    padding: 20px;
+    background-color: #000000
+  }
+
+  button {
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #ffcccc;
+    border: 3px dotted blue;
+    padding: 10px 20px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* Bounce wave keyframes */
+  @keyframes wave {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-12px); }
+  }
+
+  button span {
+    display: inline-block;
+    transition: transform 0.3s;
+  }
+
+  button:hover span {
+    animation: wave 1s infinite;
+  }
+</style>
+</head>
+<body>
+
+<header>
+    <marquee behaviour="scroll" direction="left">hello, welcome to my page</marquee>
+</header>
+
+<main>
+    <h1>home</h1>
+    <p>hlep i forgor hwo 2 us sift</p>
+    <p>i mostly to silly stuff on my page.</p>
+</main>
+
+<button class="wave" id="about">about</button>
+<div><img src="createdbyahumaniwithabrain.png" alt="cadence's human badge" style="width:150px; height: auto;"></div>
+
+<script>
+const buttons = document.querySelectorAll('.wave');
+
+document.getElementById('about').addEventListener('click', () => {
+    window.location.href = '/about.html'
+})
+
+buttons.forEach(button => {
+  const text = button.textContent;
+  button.textContent = '';
+  text.split('').forEach((char, i) => {
+    const span = document.createElement('span');
+    // Replace spaces with a non-breaking space so they render
+    span.textContent = char === ' ' ? '\u00A0' : char;
+    span.style.animationDelay = (i * 0.1) + 's';
+    button.appendChild(span);
+  });
+});
+</script>
+
+</body>
+</html>
